@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "template-to-doc-v2"
+version = "0.1.0"
+description = "Template-preserving Word agent with local replacement and optional model generation."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "python-docx>=1.1.0",
+  "pyyaml>=6.0",
+  "typer>=0.12",
+  "rich>=13.0",
+  "lxml>=5.0",
+  "pypdf>=4.0",
+]
+
+[project.optional-dependencies]
+qa = ["pillow>=10.0"]
+dev = ["pytest>=8.0", "ruff>=0.5"]
+
+[project.scripts]
+template-to-doc-v2 = "template_to_doc_v2.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100

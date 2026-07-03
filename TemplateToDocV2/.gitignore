@@ -1,0 +1,15 @@
+deepseekkey.txt
+.env
+.env.*
+
+projects/
+profiles/
+uploads/
+tmp_template2_probe/
+
+.pytest_cache/
+.ruff_cache/
+__pycache__/
+*.py[cod]
+
+*.log
