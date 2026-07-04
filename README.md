@@ -2,18 +2,16 @@
 
 ## 中文说明
 
-TemplateToDocV2 是一个“保留 Word 模板版式”的文档生成工具。它的核心思路不是把整篇文档转成 Markdown 后重新排版，而是：
+TemplateToDocV2 是一个面向 Word 模板复用的文档生成工具，适用于在既有 `.docx` 模板中填写项目字段、替换章节正文和更新图片。工具会以原始模板为基础生成 `final.docx`，尽量延续模板已有的页眉页脚、页码、样式、表格、图片、浮动对象、页边距、分节设置和域设置。
 
-```text
-复制原始 Word 模板包 -> 在原模板结构内局部替换字段、章节和图片 -> 输出 final.docx
-```
+典型使用流程包括导入 Word 模板、生成模板识别配置、填写项目内容、构建 Word 文件，以及按需执行渲染 QA 检查。Markdown 内容或大模型生成结果可以作为章节正文来源，并写回到模板中对应的位置。
 
-因此，最终文档会尽量保留原模板中的页眉页脚、页码、样式、表格、图片、浮动对象、页边距、分节设置和域设置。Markdown 或大模型可以作为局部正文的草稿来源，但 Word 输出始终从原 `.docx` 模板复制而来。
+仓库中附带了 `空管自动化软件设计说明_扩写版.docx` 示例模板，README 中的命令和路径均以该模板为示例。
 
 ### 适用场景
 
 - 已有固定 Word 模板，希望只替换局部字段、章节正文和图片。
-- 模板中包含复杂表格、页眉页脚、图文混排或已有图片，不希望重新排版。
+- 模板中包含复杂表格、页眉页脚、图文混排或已有图片，需要保持模板已有排版。
 - 需要基于 DeepSeek 自动生成某些章节正文，同时保留原模板版式。
 - 需要对输出 Word 做渲染检查，确认生成后的页面与原模板结构接近。
 
@@ -269,18 +267,16 @@ TemplateToDoc/
 
 ## English
 
-TemplateToDocV2 is a Word generation tool designed to preserve the original template layout. Instead of rebuilding the whole document from Markdown, it follows this rule:
+TemplateToDocV2 is a document generation tool for reusing existing Word templates. It fills project fields, replaces section content, and updates images inside an existing `.docx` template, then exports `final.docx`. The generated file is based on the original template package, so headers, footers, page numbers, styles, tables, images, floating objects, margins, sections, and field settings are preserved as much as possible.
 
-```text
-copy the original Word package -> replace local fields, sections, and images in place -> save final.docx
-```
+The typical workflow is to import a Word template, generate the template profile, edit project content, build the Word document, and optionally run a rendering QA check. Markdown text or LLM-generated content can be used as section draft content and written back to the corresponding locations in the template.
 
-The final Word file starts from the original `.docx` package, so headers, footers, page numbers, styles, tables, images, floating objects, margins, sections, and field settings are preserved as much as possible. Markdown or LLM output can be used as local draft content, but the final document is still written back into the original Word structure.
+This repository includes `空管自动化软件设计说明_扩写版.docx` as the sample template used by the README commands and examples.
 
 ### Use Cases
 
 - You already have a fixed Word template and only need to replace selected fields, sections, or images.
-- The template contains complex tables, headers, footers, images, or mixed text-image layout.
+- The template contains complex tables, headers, footers, images, or mixed text-image layout that should keep its existing formatting.
 - You want DeepSeek to generate section text while keeping the original Word formatting.
 - You need a rendering check to compare the generated document against the reference template.
 
