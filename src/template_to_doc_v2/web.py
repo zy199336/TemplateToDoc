@@ -89,7 +89,7 @@ button.ghost { background: #61736a; }
 <section>
 <h2>1. 导入模板</h2>
 <div class="row">
-  <div><label>模板路径</label><input id="templatePath" placeholder="例如 TemplateToDoc/模板2.doc"></div>
+  <div><label>模板路径</label><input id="templatePath" placeholder="例如 空管自动化软件设计说明_扩写版.docx"></div>
   <div><label>或上传 Word</label><input id="templateFile" type="file" accept=".doc,.docx"></div>
   <div><label>Profile ID</label><input id="profileId" placeholder="自动使用文件名"></div>
 </div>

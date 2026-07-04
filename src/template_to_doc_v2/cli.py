@@ -27,7 +27,7 @@ def import_template(
     template: Path = typer.Argument(..., exists=True, help="Word .docx/.doc template."),
     profile: Optional[str] = typer.Option(None, "--profile", "-p"),
     project_id: Optional[str] = typer.Option(None, "--project-id"),
-    root: Path = typer.Option(Path("TemplateToDocV2"), "--root"),
+    root: Path = typer.Option(Path("."), "--root"),
 ) -> None:
     result = _pipeline(root).import_template(template, profile, project_id)
     console.print(f"profile: {result['profile_id']}")
@@ -38,7 +38,7 @@ def import_template(
 def init_project(
     profile: str = typer.Argument(...),
     project_id: str = typer.Argument(...),
-    root: Path = typer.Option(Path("TemplateToDocV2"), "--root"),
+    root: Path = typer.Option(Path("."), "--root"),
 ) -> None:
     project = _pipeline(root).init_project(profile, project_id)
     console.print(f"project: {project_id}")
@@ -51,7 +51,7 @@ def build(
     profile: str = typer.Argument(...),
     project_id: str = typer.Argument(...),
     project_yaml: Optional[Path] = typer.Option(None, "--project-yaml", exists=True),
-    root: Path = typer.Option(Path("TemplateToDocV2"), "--root"),
+    root: Path = typer.Option(Path("."), "--root"),
     generate: bool = typer.Option(False, "--generate/--no-generate"),
     api_key: str = typer.Option("", "--api-key", envvar="DEEPSEEK_API_KEY"),
     model: str = typer.Option("deepseek-v4-flash", "--model"),
@@ -74,14 +74,14 @@ def build(
 def compare(
     profile: str = typer.Argument(...),
     project_id: str = typer.Argument(...),
-    root: Path = typer.Option(Path("TemplateToDocV2"), "--root"),
+    root: Path = typer.Option(Path("."), "--root"),
 ) -> None:
     console.print(_pipeline(root).compare(profile, project_id))
 
 
 @app.command("serve")
 def serve(
-    root: Path = typer.Option(Path("TemplateToDocV2"), "--root"),
+    root: Path = typer.Option(Path("."), "--root"),
     host: str = typer.Option("127.0.0.1", "--host"),
     port: int = typer.Option(8770, "--port"),
 ) -> None:
